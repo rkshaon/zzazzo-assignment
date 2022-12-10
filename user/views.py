@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from user.models import User
 
@@ -21,6 +21,8 @@ def add_user(request):
                 img=img,
                 address=address
             )
+
+            return redirect('user_list')
 
     form = NewUserForm()
 

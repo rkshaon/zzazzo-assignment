@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from oscar.apps.catalogue.models import Product
 from order_custom.models import Purchase
@@ -19,6 +19,8 @@ def add_purchase(request):
                 user=user,
                 product=product
             )
+
+            return redirect('purchase_list')
     
     form = NewPurchaseForm()
 
@@ -27,3 +29,13 @@ def add_purchase(request):
     }
 
     return render(request, 'add_purchase.html', context)
+
+
+def list_of_purchase(request):
+    purchases = Purchase.objects.all()
+
+    context = {
+        'purchases': purchases,
+    }
+
+    return render(request, 'list_purchase.html', context)
