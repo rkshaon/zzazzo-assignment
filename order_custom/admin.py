@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from order_custom.models import Purchase
+
+
+admin.site.register(Purchase)

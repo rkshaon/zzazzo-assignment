@@ -29,7 +29,7 @@ OSCAR_DASHBOARD_NAVIGATION += [
             },
             {
                 'label': _('Purchase'),
-                'url_name': 'all_products',
+                'url_name': 'add_purchase',
                 'access_fn': lambda user, url_name, url_args, url_kwargs: user.is_staff,
             },
             {
