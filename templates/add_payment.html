@@ -1,0 +1,17 @@
+{% extends 'oscar/dashboard/layout.html' %}
+
+{% block content %}
+<h2>Add Payment</h2>
+<form action="" method="POST" role="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="">Purchase</label>
+        {{ form.purchase }}
+    </div>
+    <div class="form-group">
+        <label for="">Amount</label>
+        {{ form.amount }}
+    </div>
+    <button class="btn btn-dark" type="submit">Save</button>
+</form>
+{% endblock %}

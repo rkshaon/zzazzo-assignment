@@ -40,6 +40,7 @@ class NewPaymentForm(forms.ModelForm):
     amount = forms.DecimalField(
         widget=forms.NumberInput(attrs={
             'step': 0.25,
+            'class': 'form-control',
         }),
         required=True
     )
