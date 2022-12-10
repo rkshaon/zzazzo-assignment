@@ -15,7 +15,13 @@
         <tr>
             <td>{{ user.first_name }}</td>
             <td>{{ user.last_name }}</td>
-            <td><img src="{{ user.img }}" alt="{{ user.first_name }}"/></td>
+            <td>
+                <img 
+                    src="http://127.0.0.1:8000/media/{{ user.img }}" 
+                    alt="{{ user.first_name }}"
+                    height="30"
+                />
+            </td>
             <td>{{ user.address }}</td>
         </tr>
         {% endfor %}
