@@ -39,3 +39,27 @@ def list_of_purchase(request):
     }
 
     return render(request, 'list_purchase.html', context)
+
+
+def add_payment(request):
+    if request.method == 'POST':
+        form = NewPurchaseForm(request.POST)
+
+        if form.is_valid():
+            user = User.objects.get(pk=request.POST.get('user'))
+            product = Product.objects.get(pk=request.POST.get('product'))
+
+            purchase = Purchase.objects.create(
+                user=user,
+                product=product
+            )
+
+            return redirect('purchase_list')
+    
+    form = NewPurchaseForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'add_purchase.html', context)
