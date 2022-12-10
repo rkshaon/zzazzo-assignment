@@ -29,3 +29,13 @@ def add_user(request):
     }
 
     return render(request, 'add_user.html', context)
+
+
+def list_of_user(request):
+    users = User.objects.all()
+
+    context = {
+        'users': users,
+    }
+
+    return render(request, 'list_user.html', context)

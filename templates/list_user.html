@@ -1,0 +1,23 @@
+{% extends 'oscar/dashboard/layout.html' %}
+
+{% block content %}
+    <h2>Display all users</h2>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Photo</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td><img src="{{ user.img }}" alt="{{ user.first_name }}"/></td>
+            <td>{{ user.address }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

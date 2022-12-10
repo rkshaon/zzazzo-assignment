@@ -38,6 +38,27 @@ OSCAR_DASHBOARD_NAVIGATION += [
                 'access_fn': lambda user, url_name, url_args, url_kwargs: user.is_staff,
             }
         ]
+    },
+    {
+        'label': _('Output'),
+        'icon': 'icon-map-marker',
+        'children': [
+            {
+                'label': _('User'),
+                'url_name': 'user_list',
+                'access_fn': lambda user, url_name, url_args, url_kwargs: user.is_staff,
+            },
+            {
+                'label': _('Purchase'),
+                'url_name': 'add_purchase',
+                'access_fn': lambda user, url_name, url_args, url_kwargs: user.is_staff,
+            },
+            {
+                'label': _('Payment'),
+                'url_name': 'all_products',
+                'access_fn': lambda user, url_name, url_args, url_kwargs: user.is_staff,
+            }
+        ]
     }
 ]
 
