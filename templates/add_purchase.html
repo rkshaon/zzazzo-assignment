@@ -4,14 +4,14 @@
 <h2>Add Purchase</h2>
 <form action="" method="POST" role="form" enctype="multipart/form-data">
     {% csrf_token %}
-    <div>
+    <div class="form-group">
         <label for="">User</label>
         {{ form.user }}
     </div>
-    <div>
+    <div class="form-group">
         <label for="">Product</label>
         {{ form.product }}
     </div>
-    <button type="submit">Save</button>
+    <button class="btn btn-dark" type="submit">Save</button>
 </form>
 {% endblock %}

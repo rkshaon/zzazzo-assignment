@@ -8,10 +8,16 @@ from user.models import User
 class NewPurchaseForm(forms.ModelForm):
     user = forms.ModelChoiceField(
         queryset=User.objects.all(), 
-        widget=forms.Select(attrs={}), required=True)
+        widget=forms.Select(attrs={
+            'class': 'form-control',
+        }), 
+        required=True)
     product = forms.ModelChoiceField(
         queryset=Product.objects.all(), 
-        widget=forms.Select(attrs={}), required=True)
+        widget=forms.Select(attrs={
+            'class': 'form-control',
+        }),
+        required=True)
     
     class Meta:
         model = Purchase
