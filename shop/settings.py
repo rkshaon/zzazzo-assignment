@@ -81,6 +81,8 @@ INSTALLED_APPS = [
     'treebeard',
     'sorl.thumbnail',   # Default thumbnail backend, can be replaced
     'django_tables2',
+    # my apps
+    'user',
 ]
 
 SITE_ID = 1
@@ -199,3 +201,5 @@ HAYSTACK_CONNECTIONS = {
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AUTH_USER_MODEL = 'user.User'
