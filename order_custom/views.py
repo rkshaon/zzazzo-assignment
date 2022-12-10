@@ -48,13 +48,6 @@ def add_payment(request):
         form = NewPaymentForm(request.POST)
 
         if form.is_valid():
-            # user = User.objects.get(pk=request.POST.get('user'))
-            # product = Product.objects.get(pk=request.POST.get('product'))
-
-            # purchase = Purchase.objects.create(
-            #     user=user,
-            #     product=product
-            # )
             purchase = Purchase.objects.get(pk=request.POST.get('purchase'))
             amount = request.POST.get('amount')
 
