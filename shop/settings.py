@@ -110,6 +110,7 @@ INSTALLED_APPS = [
     # my apps
     'user',
     'product',
+    'order_custom',
 ]
 
 SITE_ID = 1
