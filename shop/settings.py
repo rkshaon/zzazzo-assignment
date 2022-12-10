@@ -19,11 +19,11 @@ from django.utils.translation import ugettext_lazy as _
 
 OSCAR_DASHBOARD_NAVIGATION += [
     {
-        'label': _('Products'),
+        'label': _('Input'),
         'icon': 'icon-map-marker',
         'children': [
             {
-                'label': _('All Product'),
+                'label': _('User'),
                 'url_name': 'all_products',
                 'access_fn': lambda user, url_name, url_args, url_kwargs: user.is_staff,
             }
