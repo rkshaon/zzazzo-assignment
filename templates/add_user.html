@@ -1,0 +1,25 @@
+{% extends 'oscar/dashboard/layout.html' %}
+
+{% block content %}
+<h2>Add User</h2>
+<form action="" method="POST" role="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <label for="">First Name</label>
+        {{ form.first_name }}
+    </div>
+    <div>
+        <label for="">Last Name</label>
+        {{ form.last_name }}
+    </div>
+    <div>
+        <label for="">Image</label>
+        {{ form.img }}
+    </div>
+    <div>
+        <label for="">Address</label>
+        {{ form.address }}
+    </div>
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
