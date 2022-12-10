@@ -15,6 +15,22 @@ from oscar.defaults import *
 
 import os
 
+from django.utils.translation import ugettext_lazy as _
+
+OSCAR_DASHBOARD_NAVIGATION += [
+    {
+        'label': _('Products'),
+        'icon': 'icon-map-marker',
+        'children': [
+            {
+                'label': _('All Product'),
+                'url_name': 'all_products',
+                'access_fn': lambda user, url_name, url_args, url_kwargs: user.is_staff,
+            }
+        ]
+    }
+]
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -83,6 +99,7 @@ INSTALLED_APPS = [
     'django_tables2',
     # my apps
     'user',
+    'product',
 ]
 
 SITE_ID = 1
@@ -110,7 +127,9 @@ ROOT_URLCONF = 'shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
