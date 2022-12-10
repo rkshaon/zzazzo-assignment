@@ -1,28 +1,18 @@
 {% extends 'oscar/dashboard/layout.html' %}
 
 {% block content %}
-    <h2>Display all users</h2>
+    <h2>Display all purchases</h2>
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Photo</th>
-            <th>Address</th>
+            <th>User</th>
+            <th>Product</th>
         </tr>
         </thead>
-        {% for user in users %}
+        {% for purchase in purchases %}
         <tr>
-            <td>{{ user.first_name }}</td>
-            <td>{{ user.last_name }}</td>
-            <td>
-                <img 
-                    src="http://127.0.0.1:8000/media/{{ user.img }}" 
-                    alt="{{ user.first_name }}"
-                    height="30"
-                />
-            </td>
-            <td>{{ user.address }}</td>
+            <td>{{ purchase.user.first_name }} {{ purchase.user.last_name }}</td>
+            <td>{{ purchase.product.title }}</td>
         </tr>
         {% endfor %}
     </table>
