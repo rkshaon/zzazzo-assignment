@@ -1,1 +1,5 @@
 /env
+
+__pycache__/
+shop/__pycache__/
+
