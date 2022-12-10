@@ -59,6 +59,12 @@ OSCAR_DASHBOARD_NAVIGATION += [
                 'access_fn': lambda user, url_name, url_args, url_kwargs: user.is_staff,
             }
         ]
+    },
+    {
+        'label': _('Report'),
+        'icon': 'nothing',
+        'url_name': 'reports',
+        'access_fn': lambda user, url_name, url_args, url_kwargs: user.is_staff,
     }
 ]
 

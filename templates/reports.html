@@ -1,0 +1,41 @@
+{% extends 'oscar/dashboard/layout.html' %}
+
+{% block content %}
+    <h2>Reports</h2>
+    <!-- <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Amount</th>
+                <th>Product</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payment in payments %}
+            <tr>
+                <td>{{ payment.amount }}</td>
+                <td>{{ payment.purchase.product.title }}</td>
+                <td>{{ payment.purchase.user.first_name }} {{ payment.purchase.user.last_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> -->
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>User</th>
+                <th>Product</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for report in reports %}
+            <tr>
+                <td>{{ report.purchase__user__first_name }} {{ report.purchase__user__last_name }}</td>
+                <td>{{ report.purchase__product__title }}</td>
+                <td>{{ report.amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
