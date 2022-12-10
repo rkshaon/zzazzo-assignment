@@ -55,7 +55,7 @@ OSCAR_DASHBOARD_NAVIGATION += [
             },
             {
                 'label': _('Payment'),
-                'url_name': 'all_products',
+                'url_name': 'payment_list',
                 'access_fn': lambda user, url_name, url_args, url_kwargs: user.is_staff,
             }
         ]

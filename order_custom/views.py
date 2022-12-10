@@ -63,7 +63,7 @@ def add_payment(request):
                 amount=amount
             )
 
-            # return redirect('purchase_list')
+            return redirect('payment_list')
     
     form = NewPaymentForm()
 
@@ -72,3 +72,13 @@ def add_payment(request):
     }
 
     return render(request, 'add_payment.html', context)
+
+
+def list_of_payment(request):
+    payments = Payment.objects.all()
+
+    context = {
+        'payments': payments,
+    }
+
+    return render(request, 'list_payment.html', context)

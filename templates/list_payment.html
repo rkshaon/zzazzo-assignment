@@ -1,0 +1,19 @@
+{% extends 'oscar/dashboard/layout.html' %}
+
+{% block content %}
+    <h2>Display all payments</h2>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Purchase</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        {% for payment in payments %}
+        <tr>
+            <td>{{ payment.purchase }}</td>
+            <td>{{ payment.amount }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
