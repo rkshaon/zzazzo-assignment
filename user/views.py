@@ -67,18 +67,10 @@ def reports(request):
                 'payment': payment_list
             })
 
-            # purchase['payment'] = payment_list
-
         final_reports.append({
             'user': user,
             'purchase': temp,
         })
-    
-    print('\n\n')
-    print('******************')
-    print(final_reports)
-    print('******************')
-    print('\n\n')
 
     context = {
         'users': users,
