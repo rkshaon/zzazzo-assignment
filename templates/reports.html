@@ -20,7 +20,8 @@
             {% endfor %}
         </tbody>
     </table> -->
-    <table class="table">
+    <!-- first try -->
+    <!-- <table class="table">
         <thead class="thead-dark">
             <tr>
                 <th>User</th>
@@ -37,5 +38,27 @@
             </tr>
             {% endfor %}
         </tbody>
-    </table>
+    </table> -->
+    <!-- second try -->
+    {% for f in final %}
+    <div class="card" style="width: 50rem; margin: 10px;">
+        <div class="card-body">
+          <h5 class="card-title">{{ f.user.first_name }} {{ f.user.last_name }}</h5>
+          <p class="card-text">Purchase List</p>
+          <ul class="list-group">
+            {% for pur in f.purchase %}
+            <li class="list-group-item text-info">{{ pur.purchase.product.title }}</li>
+            <ul class="list-group">
+                {% if pur.payment|length < 1 %}
+                <li class="list-group-item text-danger">No payment history</li>
+                {% endif %}
+                {% for pay in pur.payment %}
+                <li class="list-group-item">Paid {{ pay.amount }} BDT</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
 {% endblock %}

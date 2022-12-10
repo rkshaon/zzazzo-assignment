@@ -49,21 +49,43 @@ def reports(request):
     users = User.objects.all()
     purchases = Purchase.objects.all()
     payments = Payment.objects.all()
-
-    # reports = Payment.objects.all().select_related('purchase__user__id')
-    reports = Payment.objects.values('amount', 'purchase__product__title', 'purchase__user__first_name', 'purchase__user__last_name').order_by('purchase__user__id')
-
-    # print(reports)
-
-    for report in reports:
-        print(report)
-    #     print(report['amount'])
     
+    reports = Payment.objects.values('amount', 'purchase__product__title', 'purchase__user__first_name', 'purchase__user__last_name').order_by('purchase__user__id')
+    
+    final_reports = []
+
+    for user in users:
+        purchase_list = Purchase.objects.filter(user=user)
+
+        temp = []
+
+        for purchase in purchase_list:
+            payment_list = Payment.objects.filter(purchase=purchase)
+
+            temp.append({
+                'purchase': purchase,
+                'payment': payment_list
+            })
+
+            # purchase['payment'] = payment_list
+
+        final_reports.append({
+            'user': user,
+            'purchase': temp,
+        })
+    
+    print('\n\n')
+    print('******************')
+    print(final_reports)
+    print('******************')
+    print('\n\n')
+
     context = {
         'users': users,
         'purchases': purchases,
         'payments': payments,
         'reports': reports,
+        'final': final_reports,
     }
 
     return render(request, 'reports.html', context)
