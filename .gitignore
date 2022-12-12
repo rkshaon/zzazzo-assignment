@@ -3,4 +3,10 @@
 
 __pycache__/
 shop/__pycache__/
+user/__pycache__/
+user/migrations/
+product/__pycache__/
+product/migrations/
+order_custom/__pycache__/
+order_custom/migrations/
 
