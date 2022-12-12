@@ -105,9 +105,7 @@ def reports_api(request):
             payment_list = Payment.objects.filter(purchase=purchase)
 
             temp.append({
-                # 'purchase': purchase,
                 'purchase': PurchaseSerializer(purchase, many=False).data,
-                # 'payment': payment_list
                 'payment': PaymentSerializer(payment_list, many=True).data,
             })
 
@@ -115,19 +113,6 @@ def reports_api(request):
             'user': user_data,
             'purchase': temp,
         })
-        # {
-        #     'user': user,
-        #     'purchase': temp,
-        # }
-
-    # user_serializer = UserSerializer(users, many=True)
-
-    # print(user_serializer.data)
-
-    # for user in user_serializer.data:
-    #     purchase_list = Purchase.objects.filter(user=User.objects.get(id=user['id']))
-    #     # final_reports.append(user)
-    #     temp = []
 
     data = final_reports
 
