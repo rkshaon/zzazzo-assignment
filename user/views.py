@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from user.models import User
 from order_custom.models import Purchase
 from order_custom.models import Payment
 
 from user.forms import NewUserForm
+from user.serializers import UserSerializer
+from order_custom.serializers import PurchaseSerializer
+from order_custom.serializers import PaymentSerializer
 
 
 def add_user(request):
@@ -81,3 +87,51 @@ def reports(request):
     }
 
     return render(request, 'reports.html', context)
+
+
+@api_view(['GET'])
+def reports_api(request):
+    final_reports = []
+    users = User.objects.all()
+
+    for user in users:
+        user_data = UserSerializer(user, many=False).data
+
+        purchase_list = Purchase.objects.filter(user=user)
+
+        temp = []
+
+        for purchase in purchase_list:
+            payment_list = Payment.objects.filter(purchase=purchase)
+
+            temp.append({
+                # 'purchase': purchase,
+                'purchase': PurchaseSerializer(purchase, many=False).data,
+                # 'payment': payment_list
+                'payment': PaymentSerializer(payment_list, many=True).data,
+            })
+
+        final_reports.append({
+            'user': user_data,
+            'purchase': temp,
+        })
+        # {
+        #     'user': user,
+        #     'purchase': temp,
+        # }
+
+    # user_serializer = UserSerializer(users, many=True)
+
+    # print(user_serializer.data)
+
+    # for user in user_serializer.data:
+    #     purchase_list = Purchase.objects.filter(user=User.objects.get(id=user['id']))
+    #     # final_reports.append(user)
+    #     temp = []
+
+    data = final_reports
+
+    return Response({
+        'status': True,
+        'data': data,
+    })

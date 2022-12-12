@@ -1,2 +1,6 @@
 django-oscar
 sorl-thumbnail
+djangorestframework
+markdown
+django-filter
+

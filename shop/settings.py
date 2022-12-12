@@ -138,6 +138,8 @@ INSTALLED_APPS = [
     'user',
     'product',
     'order_custom',
+
+    'rest_framework',
 ]
 
 SITE_ID = 1
